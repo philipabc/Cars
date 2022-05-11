@@ -1,0 +1,26 @@
+pygame · PyPI 
+
+https://packaging.python.org/tutorials/installing-packages/
+step 1:    Ensure you can run Python from the command line
+    python --version  OR  python -V
+step 2:    Ensure you can run pip from the command line
+    pip --version   OR python -V
+
+step 3:    help:
+    python -h       OR  python --help
+    pip install -h  OR  pip install --help
+    pip -h          OR  pip --help
+
+step 4:    Ensure pip, setuptools, and wheel are up to date
+    python -m pip install --upgrade pip setuptools wheel
+
+step 5:    Optionally, create a virtual environment on a typical Linux system: 
+    python -m venv tutorial_env
+    source tutorial_env/bin/activate
+
+
+step 6:    install module: for example install pygame
+python -m pip install --upgrade  --user pygame notebook
+python -m pip install -U         --user pygame notebook
+
+step 7:     run: 转到相应的目录及entry point文件运行，以保证能调用到相应的资源如图片等

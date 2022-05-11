@@ -1,0 +1,10 @@
+from const import PI
+
+def calc_round_area(radius):
+    return PI * (radius ** 2)
+
+def main():
+    print("round area: ", calc_round_area(10))
+
+if __name__ == "__main__":
+    main()

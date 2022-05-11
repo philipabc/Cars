@@ -1,0 +1,10 @@
+print("welcome!")
+print("please input the height:",end ="")
+height=float(input())
+print("now please input the width:",end =(" "))
+width=float(input())
+print("the area is...",height*width/2)
+hypotenuseLength=pow(height**2+width**2,1.0/2)
+print("the triangle hypotenuse length is...", hypotenuseLength)
+print("the perimeter is...",height+width+hypotenuseLength)
+

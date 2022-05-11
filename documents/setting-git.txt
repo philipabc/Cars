@@ -1,0 +1,49 @@
+https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%88%9D%E6%AC%A1%E8%BF%90%E8%A1%8C-Git-%E5%89%8D%E7%9A%84%E9%85%8D%E7%BD%AE
+1、	在系统上安装了 Git，定制你的 Git 环境
+你可以通过以下命令查看所有的配置以及它们所在的文件：
+$ git config --list --show-origin
+
+2、安装完 Git 之后，要做的第一件事就是设置你的用户名和邮件地址。 这一点很重要，因为每一个 Git 提交都会使用这些信息，它们会写入到你的每一次提交中，不可更改：
+$ git config --global user.name "Philip Zheng"
+$ git config --global user.email "optionabc@gmail.com"
+
+以下链接是官方文档，如果已有key，或没有，如何处理？
+    https://help.github.com/en/github/authenticating-to-github/checking-for-existing-ssh-keys
+
+3、 remove the old key from your local cache by editing ${HOME}/.ssh/known_hosts to remove the line for domain.com or letting an SSH utility do it for you with
+    https://stackoverflow.com/questions/13363553/git-error-host-key-verification-failed-when-connecting-to-remote-repository
+    1) mkdir -p ~/.ssh      { -p 确保目录名称存在，不存在的就建一个。}
+    2) ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+    3) ssh-keygen -t rsa -C "user.email"
+    4) open the public key with this command: $ cat ~/.ssh/id_rsa.pub and copy it.
+    5) Add the id_rsa.pub key to SSH keys list on your GitHub profile.
+
+    
+git bash与tortoise和putty对密钥的存储格式的定义的不同的，PuTTY工具提供了两者之间的转换方法。首先打开GIT BASH，运行命令：
+    https://stackoverflow.com/questions/13363553/git-error-host-key-verification-failed-when-connecting-to-remote-repository
+
+
+4、Pageant can automatically load one or more private keys when it starts up, if you provide them on the Pageant command line. Your command line might then look like: 
+C:\Program Files\PuTTY\pageant.exe C:\Users\zhb68\.ssh\tortoisegit_private.ppk
+If the keys are stored encrypted, Pageant will request the passphrases on startup. 
+If Pageant is already running, this syntax loads keys into the existing Pageant. 
+
+5、承上面第4点，如果你知道正确的地方，所有这一切都非常快捷方便：
+
+打开项目文件夹中的“TortoiseGit>设置”
+导航到“Git> Remote”
+选择正确的原点
+“Putty Key”>“...”>导航到您的* .ppk文件
+瞧！
+或者只需在关于“some_project \\ .git \\ config”文件中手动添加“puttykeyfile”条目：
+
+[remote "origin"]
+    url = git@github.com:some_one/some_project.git
+    fetch = +refs/heads/*:refs/remotes/origin/*
+    puttykeyfile = C:\\Users\\some_one\\.ssh\\some_one@some.com\\id_rsa.ppk
+
+
+6、id_rsa.ppk 转为  tortoisegit_private.ppk
+https://blog.csdn.net/caoshiying/article/details/80131761?depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-4&utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-4  
+ 
+
